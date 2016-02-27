@@ -9,8 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="android.boraseoksoon.com.ljcast_android.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <ListView android:id="@+id/main_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
