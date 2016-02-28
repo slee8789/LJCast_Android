@@ -3,6 +3,7 @@ package android.boraseoksoon.com.ljcast_android;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 
 /**
  * Created by seoksoonjang on 2/27/16.
@@ -13,7 +14,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE); // AppCompatActivity에서 Title Bar 없애기
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);      // 기본 Activity에서 Title Bar 없애기
+                setContentView(R.layout.splash);
 
         Handler hd = new Handler();
         hd.postDelayed(new Runnable() {
