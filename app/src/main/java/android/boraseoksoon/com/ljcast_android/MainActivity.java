@@ -1,6 +1,7 @@
 package android.boraseoksoon.com.ljcast_android;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +10,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    String testHtmlString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startActivity(new Intent(this, SplashActivity.class));
-
         /*
          * Add ListView
          */
@@ -47,6 +58,35 @@ public class MainActivity extends AppCompatActivity {
         // ListView 가져오기
         ListView listView = (ListView) findViewById(R.id.main_listview);
 
+        this.createMainListView(listView, adapter);
+        this.GET();
+
+        /*
+         * NetworkOnMainThreadException Occured. so..
+         */
+        /*
+        URL url = null;
+        try {
+            url = new URL("http://family7914.cafe24.com");
+            HttpURLConnection http = (HttpURLConnection)url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            StringBuffer buffer = new StringBuffer();
+
+            int c;
+
+            while((c=in.read()) != -1){
+                buffer.append((char)c);
+            }
+            System.out.println(buffer);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+    }
+
+    private void createMainListView(ListView listView, ArrayAdapter<String> adapter) {
         // ListView에 각각의 아이템표시를 제어하는 Adapter를 설정
         listView.setAdapter(adapter);
 
@@ -58,7 +98,83 @@ public class MainActivity extends AppCompatActivity {
                 // TODO 아이템 클릭시에 구현할 내용은 여기에.
                 String item = (String) listView.getItemAtPosition(position);
                 Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
+
+                if(id == 0){
+                    Intent instantIntent = new Intent(MainActivity.this, TestTextViewActivity.class);
+                    instantIntent .putExtra("1", testHtmlString);
+                    startActivity(instantIntent);
+                }
+
+                // startActivity(new Intent(MainActivity.this, ThirdActivity.class));
             }
         });
+    }
+
+    private void GET()
+    {
+        new GetTask ().execute(null, null, null);
+    }
+
+    //AsyncTask<Params,Progress,Result>
+    private class GetTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Void aVoid) {
+            super.onCancelled(aVoid);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+        /*
+         * TIP : [onPreExecute()] -> [doInBackground()] -> [onPostExecute()] is in order.
+         */
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                URL url = null;
+                try {
+                    url = new URL("http://family7914.cafe24.com");
+                    HttpURLConnection http = (HttpURLConnection)url.openConnection();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+                    StringBuffer buffer = new StringBuffer();
+
+                    int c;
+
+                    while((c=in.read()) != -1){
+                        buffer.append((char)c);
+                    }
+                    System.out.println(buffer);
+
+
+                    testHtmlString = buffer.toString();
+
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }

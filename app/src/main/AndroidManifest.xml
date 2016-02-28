@@ -19,6 +19,11 @@
             android:name=".SplashActivity"
             />
 
+        <activity
+            android:name=".TestTextViewActivity"
+            />
+
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>
