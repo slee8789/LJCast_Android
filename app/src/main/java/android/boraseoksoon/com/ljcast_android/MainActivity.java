@@ -99,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
                 String item = (String) listView.getItemAtPosition(position);
                 Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
 
+                // just test
                 if(id == 0){
                     Intent instantIntent = new Intent(MainActivity.this, TestTextViewActivity.class);
                     instantIntent .putExtra("1", testHtmlString);
                     startActivity(instantIntent);
                 }
-
                 // startActivity(new Intent(MainActivity.this, ThirdActivity.class));
             }
         });
