@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by seoksoonjang on 2/28/16.
  */
@@ -21,28 +25,31 @@ public class TestTextViewActivity extends AppCompatActivity{
         tv.setText(intent.getExtras().getString("1"));
 
         // Ready To Parse JSON
-        /*
+        StringBuffer sb = new StringBuffer();
          try {
-            JSONArray jarray = new JSONArray(str);   // JSONArray 생성
+             // [{"id":2,"name":"dragoon","height":"185","weight":"95","gender":"man","job":"Software Developer","message":"Fuck"},{
+            JSONArray jarray = new JSONArray(intent.getExtras().getString("1"));   // JSONArray 생성
             for(int i=0; i < jarray.length(); i++){
                 JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
-                String address = jObject.getString("address");
                 String name = jObject.getString("name");
-                int age = jObject.getInt("age");
+                String height = jObject.getString("height");
+                String weight = jObject.getString("weight");
+                String gender = jObject.getString("gender");
+                String job= jObject.getString("job");
+                String message = jObject.getString("message");
 
                 sb.append(
-                        "주소:" + address +
-                        "이름:" + name +
-                        "나이:" + age + "\n"
+                        "이름:" + name + "\n" +
+                        "키:" + height + "\n" +
+                        "몸무게:" + weight + "\n" +
+                        "성별:" + gender + "\n" +
+                        "직업:" + job + "\n" +
+                        "메시지:" + message
                     );
             }
-            tv.setText(sb.toString());
+             tv.setText(sb.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-         */
-
-
-
     }
 }

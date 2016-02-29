@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
         // 아이템을 추가
-        adapter.add("item1");
-        adapter.add("item2");
-        adapter.add("item4");
-        adapter.add("item5");
+        adapter.add("GET");
+        adapter.add("POST");
+        adapter.add("PUT");
+        adapter.add("DELETE");
         adapter.add("item6");
         adapter.add("item7");
         adapter.add("item8");
@@ -59,32 +59,9 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.main_listview);
 
         this.createMainListView(listView, adapter);
-        this.GET();
-
-        /*
-         * NetworkOnMainThreadException Occured. so..
-         */
-        /*
-        URL url = null;
-        try {
-            url = new URL("http://family7914.cafe24.com");
-            HttpURLConnection http = (HttpURLConnection)url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
-            StringBuffer buffer = new StringBuffer();
-
-            int c;
-
-            while((c=in.read()) != -1){
-                buffer.append((char)c);
-            }
-            System.out.println(buffer);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
     }
+
+
 
     private void createMainListView(ListView listView, ArrayAdapter<String> adapter) {
         // ListView에 각각의 아이템표시를 제어하는 Adapter를 설정
@@ -100,57 +77,58 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
 
                 // just test
+                // GET
                 if(id == 0){
-                    Intent instantIntent = new Intent(MainActivity.this, TestTextViewActivity.class);
-                    instantIntent .putExtra("1", testHtmlString);
-                    startActivity(instantIntent);
+                    MainActivity.this.GET();
                 }
                 // startActivity(new Intent(MainActivity.this, ThirdActivity.class));
+                // POST
+                if(id == 1){
+                    Intent instantIntent = new Intent(MainActivity.this, POSTActivity.class);
+                    startActivity(instantIntent);
+                }
+
+                // PUT
+                if(id == 2){
+                    Intent instantIntent = new Intent(MainActivity.this, PUTActivity.class);
+                    startActivity(instantIntent);
+                }
+
+                // DELETE
+                if(id == 3){
+                    Intent instantIntent = new Intent(MainActivity.this, DELETEActivity.class);
+                    startActivity(instantIntent);
+                }
             }
         });
     }
 
-    private void GET()
-    {
+    private void GET() {
         new GetTask ().execute(null, null, null);
     }
 
-    //AsyncTask<Params,Progress,Result>
     private class GetTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onCancelled(Void aVoid) {
-            super.onCancelled(aVoid);
-        }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-        }
         /*
          * TIP : [onPreExecute()] -> [doInBackground()] -> [onPostExecute()] is in order.
          */
-
         @Override
         protected Void doInBackground(Void... params) {
             try {
                 URL url = null;
                 try {
-                    url = new URL("http://family7914.cafe24.com");
+
+                    /*
+                    127.0.0.1 does not work on Android emulator!!
+
+                     To access your PC localhost from Android emulator, use 10.0.2.2 instead of 127.0.0.1. localhost or 127.0.0.1 refers to the emulated device itself,
+                     not the host the emulator is running on.
+                    Reference: http://developer.android.com/tools/devices/emulator.html#networkaddresses
+                    For Genymotion use:  10.0.3.2 instead of 10.0.2.2
+
+                    http://stackoverflow.com/questions/18341652/connect-failed-econnrefused
+                     */
+
+                    url = new URL("http://10.0.2.2:8000/api/profile/users");
                     HttpURLConnection http = (HttpURLConnection)url.openConnection();
                     BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
                     StringBuffer buffer = new StringBuffer();
@@ -165,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
 
                     testHtmlString = buffer.toString();
 
+
+                    Intent instantIntent = new Intent(MainActivity.this, TestTextViewActivity.class);
+                    instantIntent .putExtra("1", testHtmlString);
+                    startActivity(instantIntent);
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();

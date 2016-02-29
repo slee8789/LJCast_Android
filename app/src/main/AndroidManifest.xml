@@ -15,15 +15,15 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".SplashActivity"
-            />
-
-        <activity
-            android:name=".TestTextViewActivity"
-            />
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".TestTextViewActivity" />
+        <activity android:name=".DELETEActivity" />
+        <activity android:name=".POSTActivity" />
+        <activity android:name=".GETActivity" />
+        <activity android:name=".PUTActivity" />
 
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
 </manifest>
