@@ -1,6 +1,7 @@
 package android.boraseoksoon.com.ljcast_android;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Downloader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,11 +20,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
 public class MainActivity extends AppCompatActivity {
 
     String testHtmlString;
 
+    // Simply Gradle build dependency test check - it works fine.
+    Downloader down = new Downloader() {
+        @Override
+        public Response load(Uri uri, int networkPolicy) throws IOException {
+            return null;
+        }
+
+        @Override
+        public void shutdown() {
+            //
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
