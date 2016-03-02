@@ -1,6 +1,7 @@
 package android.boraseoksoon.com.ljcast_android;
 
 import android.app.ProgressDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -45,7 +46,11 @@ public class POSTActivity extends AppCompatActivity{
                                 tv.setText("uploading started.....");
                             }
                         });
-                        int response = uploadFile("/Users/seoksoonjang/AndroidstudioProjects/LJCast_Android/app/src/main/res/drawable/screenshot.png");
+
+                        Uri uri = Uri.parse("android.resource://android.boraseoksoon.com.ljcast_android/drawable/main_launch_image.png");
+
+
+                        int response = uploadFile(uri.toString());
                         System.out.println("RES : " + response);
                     }
                 }).start();
@@ -68,13 +73,18 @@ public class POSTActivity extends AppCompatActivity{
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
+
+
+
         File sourceFile = new File(fileName);
-        /*
+
+
+
         if (!sourceFile.isFile()) {
             Log.e("uploadFile", "Source File Does not exist");
             return 0;
         }
-        */
+
         try {
             FileInputStream fileInputStream = new FileInputStream(sourceFile);
             URL url = new URL(upLoadServerUri);
