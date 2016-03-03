@@ -21,7 +21,6 @@
         <activity android:name=".POSTActivity" />
         <activity android:name=".GETActivity" />
         <activity android:name=".PUTActivity" />
-
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

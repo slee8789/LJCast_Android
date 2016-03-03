@@ -93,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 // just test
                 // GET
                 if(id == 0){
-                    MainActivity.this.GET();
+                    // MainActivity.this.GET();
+                    Intent instantIntent = new Intent(MainActivity.this, GETActivity.class);
+                    startActivity(instantIntent);
                 }
                 // startActivity(new Intent(MainActivity.this, ThirdActivity.class));
                 // POST

@@ -58,9 +58,6 @@ public class POSTActivity extends AppCompatActivity{
         });
     }
 
-
-
-
     public int uploadFile(String sourceFileUri) {
         String upLoadServerUri = "http://10.0.3.2:52273/";
         String fileName= sourceFileUri;
