@@ -20,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class MainActivity extends AppCompatActivity {
 
     String testHtmlString;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.add("POST");
         adapter.add("PUT");
         adapter.add("DELETE");
-        adapter.add("item6");
+        adapter.add("REST_TOTAL");
         adapter.add("item7");
         adapter.add("item8");
         adapter.add("item9");
@@ -113,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 // DELETE
                 if(id == 3){
                     Intent instantIntent = new Intent(MainActivity.this, DELETEActivity.class);
+                    startActivity(instantIntent);
+                }
+
+                if(id == 4){
+                    Intent instantIntent = new Intent(MainActivity.this, RESTActivity.class);
                     startActivity(instantIntent);
                 }
             }
