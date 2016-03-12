@@ -22,6 +22,11 @@
         <activity android:name=".GETActivity" />
         <activity android:name=".PUTActivity" />
         <activity android:name=".RESTActivity" />
+        <activity android:name=".BroadCastActivity" />
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".FragmentActivity" />
+        <activity android:name=".ThreadActivity" />
+        <activity android:name=".DIActivity" />
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.add("PUT");
         adapter.add("DELETE");
         adapter.add("REST_TOTAL");
-        adapter.add("item7");
-        adapter.add("item8");
-        adapter.add("item9");
-        adapter.add("item10");
-        adapter.add("item11");
+        adapter.add("BroadCast");
+        adapter.add("Service");
+        adapter.add("Fragment");
+        adapter.add("Thread");
+        adapter.add("DependencyInjection");
         adapter.add("item12");
         adapter.add("item13");
         adapter.add("item14");
@@ -119,6 +119,26 @@ public class MainActivity extends AppCompatActivity {
 
                 if(id == 4){
                     Intent instantIntent = new Intent(MainActivity.this, RESTActivity.class);
+                    startActivity(instantIntent);
+                }
+                if(id == 5){
+                    Intent instantIntent = new Intent(MainActivity.this, BroadCastActivity.class);
+                    startActivity(instantIntent);
+                }
+                if(id == 6){
+                    Intent instantIntent = new Intent(MainActivity.this, ServiceActivity.class);
+                    startActivity(instantIntent);
+                }
+                if(id == 7){
+                    Intent instantIntent = new Intent(MainActivity.this, FragmentActivity.class);
+                    startActivity(instantIntent);
+                }
+                if(id == 8){
+                    Intent instantIntent = new Intent(MainActivity.this, ThreadActivity.class);
+                    startActivity(instantIntent);
+                }
+                if(id == 9){
+                    Intent instantIntent = new Intent(MainActivity.this, DIActivity.class);
                     startActivity(instantIntent);
                 }
             }

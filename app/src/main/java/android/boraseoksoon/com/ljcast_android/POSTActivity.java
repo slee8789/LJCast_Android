@@ -49,7 +49,6 @@ public class POSTActivity extends AppCompatActivity{
 
                         Uri uri = Uri.parse("android.resource://android.boraseoksoon.com.ljcast_android/drawable/main_launch_image.png");
 
-
                         int response = uploadFile(uri.toString());
                         System.out.println("RES : " + response);
                     }
@@ -71,11 +70,7 @@ public class POSTActivity extends AppCompatActivity{
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
 
-
-
         File sourceFile = new File(fileName);
-
-
 
         if (!sourceFile.isFile()) {
             Log.e("uploadFile", "Source File Does not exist");

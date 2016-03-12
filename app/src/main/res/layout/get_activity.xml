@@ -16,10 +16,12 @@
         android:layout_height="0dp"
         android:text="http://www.google.com"
         android:id="@+id/tv"
+        android:layout_marginTop="100dp"
         android:textColor="#00FF00"
         android:textStyle="bold"
         android:textAlignment="center"
         android:layout_weight="0.1"
+        android:paddingTop="5dp"
         />
     <TextView android:layout_width="fill_parent"
         android:layout_height="0dp"
