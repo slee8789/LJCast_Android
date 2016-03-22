@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.add("item14");
         adapter.add("item15");
         adapter.add("item16");
+        // busy so comment only today...T.T
 
         // ListView 가져오기
         ListView listView = (ListView) findViewById(R.id.main_listview);
